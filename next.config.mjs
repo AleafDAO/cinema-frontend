@@ -3,8 +3,8 @@ const isProd = process.env.NODE_ENV === "production";
 const nextConfig = {
   reactStrictMode: false,
   // output: "export",
-  assetPrefix: isProd ? "https://aleafdao.github.io/cinema_frontend/" : "",
-  basePath: isProd ? "/cinema_frontend" : "",
+  assetPrefix: isProd ? "https://aleafdao.github.io/cinema-frontend/" : "",
+  basePath: isProd ? "/cinema-frontend" : "",
   images: {
     unoptimized: true,
     remotePatterns: [
