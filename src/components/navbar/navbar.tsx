@@ -9,15 +9,14 @@ import { cn } from "@/lib/utils";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import { Icon } from "@iconify/react";
-import AvatarDiv from "../avatar";
-import TooltipProvider from "../tooltip";
-import logo from "/public/logo.png";
+import { useAccount } from "wagmi";
 
 export const Navbar = () => {
   const scroll = useScroll(() => document);
   const router = useRouter();
+  const account = useAccount();
+  const isShowAvatar = account?.isConnected && account?.chain?.name === "Sepolia";
   return (
     <header
       className={cn(
@@ -28,15 +27,20 @@ export const Navbar = () => {
     >
       <div className="w-full flex justify-center items-center h-16  md:max-w-screen-lg 2xl:max-w-screen-xl">
         <ConnectButton />
-        <Icon
-          icon="icon-park-solid:avatar"
-          className="cursor-pointer ml-5"
-          width="30"
-          height="30"
-          onClick={() => {
-            router.push("/personal");
-          }}
-        />
+        {
+          isShowAvatar && (
+          <Icon
+            icon="icon-park-solid:avatar"
+            className="cursor-pointer ml-5"
+            width="30"
+            height="30"
+            onClick={() => {
+              router.push("/personal");
+            }}
+          />
+          )
+        }
+
       </div>
     </header>
   );

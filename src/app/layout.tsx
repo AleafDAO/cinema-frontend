@@ -15,7 +15,7 @@ function RootLayout({ children }: { children: React.ReactNode }) {
         <Theme>
           <Providers>
             <Navbar />
-            <main className="min-h-[calc(100vh-190px)]">{children}</main>
+            <main className="min-h-[calc(100vh-250px)]">{children}</main>
             <Footer />
           </Providers>
         </Theme>

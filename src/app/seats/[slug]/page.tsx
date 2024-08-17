@@ -1,22 +1,17 @@
 "use client";
 
 import React, { useState } from "react";
-import { useRouter, useParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import SeatPicker from "react-seat-picker";
 import {
-  Badge,
   Box,
-  Text,
-  Tabs,
   Button,
   Dialog,
-  Strong,
   Flex,
-  Spinner,
 } from "@radix-ui/themes";
 import { Cross1Icon } from "@radix-ui/react-icons";
 import {
-  Container, Row, Col, Card,
+  Container, Card,
 } from "react-bootstrap";
 import "@/styles/seats.css";
 import clsx from "clsx";
@@ -25,20 +20,13 @@ import {
 } from "@nextui-org/react";
 
 function Seats() {
-  const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState("");
   const [startPrice, setStartPrice] = useState("");
-  const [bidPrice, setBidPrice] = useState("");
-  const [floorPrice, setFloorPrice] = useState("");
-  const [reserveDuration, setReserveDuration] = useState("");
   const [interval, setInterval] = useState("");
-  const [decayInterval, setDecayInterval] = useState("");
-  const [decayAmount, setDecayAmount] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [open, setOpen] = useState(false);
 
-  const router = useRouter();
-  const { hallId } = useParams();
+  const { slug } = useParams();
   const rows = [
     [
       { id: 1, number: "A1" },
@@ -50,11 +38,11 @@ function Seats() {
       { id: 44, number: "A7" },
       { id: 54, number: "A8" },
       null,
-      { id: 5, number: "A8" },
-      { id: 6, number: "A9" },
-      { id: 7, number: "A10" },
-      { id: 8, number: "A11" },
-      { id: 9, number: "A12", isReserved: true },
+      { id: 5, number: "A9" },
+      { id: 6, number: "A10" },
+      { id: 7, number: "A11" },
+      { id: 8, number: "A12" },
+      { id: 9, number: "A13", isReserved: true },
     ],
     [
       { id: 11, number: "B1" },
@@ -178,7 +166,7 @@ function Seats() {
     <Container className="mt-5 container">
       <h2>
         当前放映厅:
-        {hallId}
+        {slug}
       </h2>
       <div className="screens">
         <h3 className="screen">SCREEN</h3>

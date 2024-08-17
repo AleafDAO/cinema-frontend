@@ -1,11 +1,12 @@
+"use client";
+
 import HallSection from "@/components/hall-section";
+import { useAccount } from "wagmi";
 
 export default function Page() {
-  return (
-    <div>
-      {/* <HeroSection /> */}
-      <HallSection />
+  const account = useAccount();
 
-    </div>
+  return (
+    account?.isConnected && account?.chain?.name === "Sepolia" ? <HallSection /> : <div className="text-center mt-20 margin-auto text-4xl font-bold">Please connect wallet</div>
   );
 }
