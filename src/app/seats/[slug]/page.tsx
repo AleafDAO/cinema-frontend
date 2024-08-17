@@ -144,7 +144,10 @@ function Seats() {
   ];
   const price = 30;
   const totalprice = price * (selected ? 1 : 0);
-
+  const removeSeatCallback = ({ row, number }, removeCb) => {
+    setSelected(null);
+    removeCb(row, number);
+  };
   const addSeatCallback = ({ row, number, id }, addCb, removeCb) => {
     // 如果已有选中的座位，先取消选中
     if (selected) {
@@ -155,11 +158,6 @@ function Seats() {
     setSelected(number);
     const newTooltip = `tooltip for id-${id} added by callback`;
     addCb(row, number, id, newTooltip);
-  };
-
-  const removeSeatCallback = ({ row, number }, removeCb) => {
-    setSelected(null);
-    removeCb(row, number);
   };
 
   return (
