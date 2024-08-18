@@ -17,7 +17,7 @@ function HallSelection() {
   const list = new Array(5).fill(0);
 
   return (
-    <Container className="text-center mt-5">
+    <Container className="text-center mt-5 md:max-w-screen-lg flex-1 2xl:max-w-7xl px-6 md:px-10">
       <h1 className="mb-4">选择放映厅</h1>
       <Row>
         {
